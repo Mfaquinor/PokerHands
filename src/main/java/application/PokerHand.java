@@ -1,12 +1,25 @@
 package application;
 
-import application.enums.Result;
+import enums.PokerResult;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PokerHand {
 
-    public PokerHand(String cards) { }
+    private final List<PokerCard> cards;
 
-    public Result compare(PokerHand hand) {
-        return Result.DRAW;
+    private final static String SEPARATOR = " ";
+
+    public PokerHand(String cards) {
+        this.cards =
+                Arrays.stream(cards.split(SEPARATOR))
+                        .map(PokerCard::new)
+                        .collect(Collectors.toList());
+    }
+
+    public PokerResult compare(PokerHand hand) {
+        return PokerResult.DRAW;
     }
 }

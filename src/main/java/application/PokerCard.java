@@ -2,12 +2,15 @@ package application;
 
 import enums.PokerRank;
 import enums.PokerSuit;
+import lombok.Getter;
 
 public class PokerCard {
 
-    private PokerRank rank;
+    @Getter
+    private final PokerRank rank;
 
-    private PokerSuit suit;
+    @Getter
+    private final PokerSuit suit;
 
     public PokerCard(char[] card) {
         this.rank = PokerRank.from(card[0]);

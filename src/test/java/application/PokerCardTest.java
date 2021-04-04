@@ -2,6 +2,7 @@ package application;
 
 import enums.PokerRank;
 import enums.PokerSuit;
+import exceptions.PokerException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -421,5 +422,45 @@ public class PokerCardTest {
 
         Assert.assertEquals(PokerRank.ACE, card.getRank());
         Assert.assertEquals(PokerSuit.CLUBS, card.getSuit());
+    }
+
+    @Test
+    public void doExceptionWithEmptyArgument() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerCard(""));
+
+        Assert.assertEquals("PokerCard Invalid Size Arguments", exception.getMessage());
+    }
+
+    @Test
+    public void doExceptionWithOneArgument() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerCard("1"));
+
+        Assert.assertEquals("PokerCard Invalid Size Arguments", exception.getMessage());
+    }
+
+    @Test
+    public void doExceptionWithManyArguments() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerCard("ACE"));
+
+        Assert.assertEquals("PokerCard Invalid Size Arguments", exception.getMessage());
+    }
+
+    @Test
+    public void doExceptionWithInvalidRank() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerCard("1D"));
+
+        Assert.assertEquals("PokerRank Invalid Symbol", exception.getMessage());
+    }
+
+    @Test
+    public void doExceptionWithInvalidSuit() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerCard("AL"));
+
+        Assert.assertEquals("PokerSuit Invalid Symbol", exception.getMessage());
     }
 }

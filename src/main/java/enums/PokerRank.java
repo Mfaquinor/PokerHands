@@ -1,6 +1,9 @@
 package enums;
 
+import lombok.Getter;
+
 import java.util.Arrays;
+import java.util.Optional;
 
 public enum PokerRank {
     TWO("2"),
@@ -23,14 +26,13 @@ public enum PokerRank {
         this.symbol = symbol;
     }
 
-    public static PokerRank from(char value) {
+    public static Optional<PokerRank> from(char value) {
         return PokerRank.from(Character.toString(value));
     }
 
-    public static PokerRank from(String value) {
+    public static Optional<PokerRank> from(String value) {
         return Arrays.stream(values())
                 .filter(rank -> rank.symbol.equals(value))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 }

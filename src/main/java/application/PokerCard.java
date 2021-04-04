@@ -2,9 +2,14 @@ package application;
 
 import enums.PokerRank;
 import enums.PokerSuit;
+import exceptions.PokerException;
 import lombok.Getter;
 
+import java.util.Optional;
+
 public class PokerCard {
+
+    private final static int CHARS_SIZE = 2;
 
     @Getter
     private final PokerRank rank;
@@ -13,8 +18,16 @@ public class PokerCard {
     private final PokerSuit suit;
 
     public PokerCard(char[] card) {
-        this.rank = PokerRank.from(card[0]);
-        this.suit = PokerSuit.from(card[1]);
+        if(card == null || card.length != CHARS_SIZE)
+            throw new PokerException("PokerCard Invalid Size Arguments");
+
+        this.rank =
+                Optional.of(PokerRank.from(card[0]))
+                        .get().orElseThrow(() -> new PokerException("PokerRank Invalid Symbol"));
+
+        this.suit =
+                Optional.of(PokerSuit.from(card[1]))
+                    .get().orElseThrow(() -> new PokerException("PokerSuit Invalid Symbol"));
     }
 
     public PokerCard(String card) {

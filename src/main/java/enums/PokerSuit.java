@@ -1,6 +1,7 @@
 package enums;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public enum PokerSuit {
     CLUBS("C"),
@@ -14,14 +15,13 @@ public enum PokerSuit {
         this.symbol = symbol;
     }
 
-    public static PokerSuit from(char value) {
+    public static Optional<PokerSuit> from(char value) {
         return PokerSuit.from(Character.toString(value));
     }
 
-    private static PokerSuit from(String value) {
+    private static Optional<PokerSuit> from(String value) {
         return Arrays.stream(values())
                 .filter(suit -> suit.symbol.equals(value))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 }

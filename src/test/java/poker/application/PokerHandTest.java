@@ -1,6 +1,6 @@
-package application;
+package poker.application;
 
-import enums.PokerResult;
+import poker.enums.PokerResult;
 import org.junit.Assert;
 import org.junit.Test;
 

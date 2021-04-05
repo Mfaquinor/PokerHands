@@ -1,6 +1,4 @@
-package enums;
-
-import lombok.Getter;
+package poker.enums;
 
 import java.util.Arrays;
 import java.util.Optional;

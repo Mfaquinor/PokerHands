@@ -1,8 +1,8 @@
-package application;
+package poker.application;
 
-import enums.PokerRank;
-import enums.PokerSuit;
-import exceptions.PokerException;
+import poker.enums.PokerRank;
+import poker.enums.PokerSuit;
+import poker.exceptions.PokerException;
 import lombok.Getter;
 
 import java.util.Optional;

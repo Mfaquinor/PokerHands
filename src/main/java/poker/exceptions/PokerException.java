@@ -1,4 +1,4 @@
-package exceptions;
+package poker.exceptions;
 
 public class PokerException extends RuntimeException {
 

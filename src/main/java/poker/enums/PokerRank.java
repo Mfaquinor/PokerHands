@@ -1,7 +1,11 @@
 package poker.enums;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum PokerRank implements Comparable<PokerRank> {
     ACE("A"),
@@ -32,5 +36,19 @@ public enum PokerRank implements Comparable<PokerRank> {
         return Arrays.stream(values())
                 .filter(rank -> rank.symbol.equals(value))
                 .findFirst();
+    }
+
+    public static boolean isSequence(List<PokerRank> ranks) {
+        return Collections.indexOfSubList(List.of(values()), ranks) != -1;
+    }
+
+    public static boolean hasOccurrences(List<PokerRank> ranks, long count) {
+        return ranks.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .containsValue(count);
+    }
+
+    public static boolean hasDistinct(List<PokerRank> ranks, long count) {
+        return ranks.stream().distinct().count() == count;
     }
 }

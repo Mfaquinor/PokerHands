@@ -1,6 +1,7 @@
 package poker.enums;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public enum PokerSuit {
@@ -23,5 +24,9 @@ public enum PokerSuit {
         return Arrays.stream(values())
                 .filter(suit -> suit.symbol.equals(value))
                 .findFirst();
+    }
+
+    public static boolean isUnique(List<PokerSuit> suits) {
+        return suits.stream().distinct().count() == 1;
     }
 }

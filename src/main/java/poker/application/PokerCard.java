@@ -1,5 +1,6 @@
 package poker.application;
 
+import lombok.EqualsAndHashCode;
 import poker.enums.PokerRank;
 import poker.enums.PokerSuit;
 import poker.exceptions.PokerException;
@@ -7,7 +8,8 @@ import lombok.Getter;
 
 import java.util.Optional;
 
-public class PokerCard {
+@EqualsAndHashCode
+public class PokerCard implements Comparable<PokerCard> {
 
     private final static int CHARS_SIZE = 2;
 
@@ -16,6 +18,11 @@ public class PokerCard {
 
     @Getter
     private final PokerSuit suit;
+
+    public PokerCard(PokerRank rank, PokerSuit suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
 
     public PokerCard(char[] card) {
         if(card == null || card.length != CHARS_SIZE)
@@ -32,5 +39,10 @@ public class PokerCard {
 
     public PokerCard(String card) {
         this(card.toCharArray());
+    }
+
+    @Override
+    public int compareTo(PokerCard card) {
+        return this.rank.compareTo(card.getRank());
     }
 }

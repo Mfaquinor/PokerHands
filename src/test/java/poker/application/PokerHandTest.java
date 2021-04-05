@@ -1,9 +1,13 @@
 package poker.application;
 
+import poker.enums.PokerRank;
 import poker.enums.PokerResult;
 import org.junit.Assert;
 import org.junit.Test;
+import poker.enums.PokerSuit;
 import poker.exceptions.PokerException;
+
+import java.util.List;
 
 public class PokerHandTest {
 
@@ -29,6 +33,21 @@ public class PokerHandTest {
                 Assert.assertThrows(PokerException.class, () -> new PokerHand("7H 7C QC JS TS JS JC"));
 
         Assert.assertEquals("PokerHand Number Of Cards Must Be 5!", exception.getMessage());
+    }
+
+    @Test
+    public void doSortedCardsTest() {
+        PokerHand hand =
+                new PokerHand("2H 4S KD AD 7C");
+
+        List<PokerCard> cards = List.of(
+                new PokerCard(PokerRank.ACE, PokerSuit.DIAMONDS),
+                new PokerCard(PokerRank.KING, PokerSuit.DIAMONDS),
+                new PokerCard(PokerRank.SEVEN, PokerSuit.CLUBS),
+                new PokerCard(PokerRank.FOUR, PokerSuit.SPADES),
+                new PokerCard(PokerRank.TWO, PokerSuit.HEARTS));
+
+        Assert.assertEquals(cards, hand.getCards());
     }
 
     @Test

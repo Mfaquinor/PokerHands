@@ -1,5 +1,6 @@
 package poker.application;
 
+import lombok.Getter;
 import poker.enums.PokerResult;
 import poker.exceptions.PokerException;
 
@@ -9,10 +10,11 @@ import java.util.stream.Collectors;
 
 public class PokerHand {
 
-    private final List<PokerCard> cards;
-
     private final static String SEPARATOR = " ";
     private final static int NUMBER_OF_CARDS = 5;
+
+    @Getter
+    private final List<PokerCard> cards;
 
     public PokerHand(String hand) {
         String[] cards = hand.split(SEPARATOR);
@@ -23,6 +25,7 @@ public class PokerHand {
         this.cards =
                 Arrays.stream(cards)
                         .map(PokerCard::new)
+                        .sorted()
                         .collect(Collectors.toList());
     }
 

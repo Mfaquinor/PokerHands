@@ -1,6 +1,7 @@
 package poker.application;
 
 import poker.enums.PokerResult;
+import poker.exceptions.PokerException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,10 +12,16 @@ public class PokerHand {
     private final List<PokerCard> cards;
 
     private final static String SEPARATOR = " ";
+    private final static int NUMBER_OF_CARDS = 5;
 
-    public PokerHand(String cards) {
+    public PokerHand(String hand) {
+        String[] cards = hand.split(SEPARATOR);
+
+        if (cards.length != NUMBER_OF_CARDS)
+            throw new PokerException("PokerHand Number Of Cards Must Be 5!");
+
         this.cards =
-                Arrays.stream(cards.split(SEPARATOR))
+                Arrays.stream(cards)
                         .map(PokerCard::new)
                         .collect(Collectors.toList());
     }

@@ -3,8 +3,33 @@ package poker.application;
 import poker.enums.PokerResult;
 import org.junit.Assert;
 import org.junit.Test;
+import poker.exceptions.PokerException;
 
 public class PokerHandTest {
+
+    @Test
+    public void doExceptionWithZeroCards() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerHand(""));
+
+        Assert.assertEquals("PokerHand Number Of Cards Must Be 5!", exception.getMessage());
+    }
+
+    @Test
+    public void doExceptionWithThreeCards() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerHand("9C TC JC"));
+
+        Assert.assertEquals("PokerHand Number Of Cards Must Be 5!", exception.getMessage());
+    }
+
+    @Test
+    public void doExceptionWithSevenCards() {
+        PokerException exception =
+                Assert.assertThrows(PokerException.class, () -> new PokerHand("7H 7C QC JS TS JS JC"));
+
+        Assert.assertEquals("PokerHand Number Of Cards Must Be 5!", exception.getMessage());
+    }
 
     @Test
     public void do1thCaseTest() {

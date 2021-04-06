@@ -1,6 +1,7 @@
 package poker.application;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import poker.enums.PokerRank;
 import poker.enums.PokerSuit;
 import poker.exceptions.PokerException;
@@ -8,7 +9,8 @@ import lombok.Getter;
 
 import java.util.Optional;
 
-@EqualsAndHashCode
+@ToString
+@EqualsAndHashCode(of = {"rank"})
 public class PokerCard implements Comparable<PokerCard> {
 
     private final static int CHARS_SIZE = 2;

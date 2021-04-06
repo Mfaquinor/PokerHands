@@ -1,15 +1,13 @@
 package poker.application;
 
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.Getter;
 import poker.enums.PokerRank;
 import poker.enums.PokerSuit;
 import poker.exceptions.PokerException;
-import lombok.Getter;
 
 import java.util.Optional;
 
-@ToString
 @EqualsAndHashCode(of = {"rank"})
 public class PokerCard implements Comparable<PokerCard> {
 

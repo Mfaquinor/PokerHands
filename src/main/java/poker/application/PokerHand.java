@@ -43,12 +43,12 @@ public class PokerHand {
     }
 
     public PokerResult compare(PokerHand hand) {
-        return this.category.different(hand.category) ?
-                this.category.compare(hand.category) :
+        return this.category.different(hand.getCategory()) ?
+                this.category.compare(hand.getCategory()) :
                 this.tiebreaker(hand);
     }
 
-    private PokerResult tiebreaker(PokerHand hand) {
+    public PokerResult tiebreaker(PokerHand hand) {
         return IntStream.range(0, NUMBER_OF_CARDS)
                     .map(i -> hand.getCard(i).compareTo(this.getCard(i)))
                     .filter(evaluation -> evaluation != 0)

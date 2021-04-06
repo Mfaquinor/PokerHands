@@ -1,13 +1,9 @@
 package poker.application;
 
-import poker.enums.PokerRank;
-import poker.enums.PokerResult;
 import org.junit.Assert;
 import org.junit.Test;
-import poker.enums.PokerSuit;
+import poker.enums.PokerResult;
 import poker.exceptions.PokerException;
-
-import java.util.List;
 
 public class PokerHandTest {
 
@@ -36,27 +32,12 @@ public class PokerHandTest {
     }
 
     @Test
-    public void doSortedCardsTest() {
-        PokerHand hand =
-                new PokerHand("2H 4S KD AD 7C");
-
-        List<PokerCard> cards = List.of(
-                new PokerCard(PokerRank.ACE, PokerSuit.DIAMONDS),
-                new PokerCard(PokerRank.KING, PokerSuit.DIAMONDS),
-                new PokerCard(PokerRank.SEVEN, PokerSuit.CLUBS),
-                new PokerCard(PokerRank.FOUR, PokerSuit.SPADES),
-                new PokerCard(PokerRank.TWO, PokerSuit.HEARTS));
-
-        Assert.assertEquals(cards, hand.getCards());
-    }
-
-    @Test
     public void do1thCaseTest() {
         PokerResult game =
                 new PokerHand("9C TC JC QC KC")
                         .compare(new PokerHand("9C 9H 5C 5H AC"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -65,7 +46,7 @@ public class PokerHandTest {
                 new PokerHand("TC TH 5C 5H KH")
                         .compare(new PokerHand("9C 9H 5C 5H AC"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -74,7 +55,7 @@ public class PokerHandTest {
                 new PokerHand("TS TD KC JC 7C")
                         .compare(new PokerHand("JS JC AS KC TD"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -83,7 +64,7 @@ public class PokerHandTest {
                 new PokerHand("7H 7C QC JS TS")
                         .compare(new PokerHand("7D 7C JS TS 6D"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -92,7 +73,7 @@ public class PokerHandTest {
                 new PokerHand("5S 5D 8C 7S 6H")
                         .compare(new PokerHand("7D 7S 5S 5D JS"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -101,7 +82,7 @@ public class PokerHandTest {
                 new PokerHand("AS AD KD 7C 3D")
                         .compare(new PokerHand("AD AH KD 7C 4S"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -110,7 +91,7 @@ public class PokerHandTest {
                 new PokerHand("TS JS QS KS AS")
                         .compare(new PokerHand("AC AH AS AS KS"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -119,7 +100,7 @@ public class PokerHandTest {
                 new PokerHand("TS JS QS KS AS")
                         .compare(new PokerHand("TC JS QC KS AC"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -128,7 +109,7 @@ public class PokerHandTest {
                 new PokerHand("TS JS QS KS AS")
                         .compare(new PokerHand("QH QS QC AS 8H"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -137,7 +118,7 @@ public class PokerHandTest {
                 new PokerHand("AC AH AS AS KS")
                         .compare(new PokerHand("TC JS QC KS AC"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -146,7 +127,7 @@ public class PokerHandTest {
                 new PokerHand("AC AH AS AS KS")
                         .compare(new PokerHand("QH QS QC AS 8H"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -155,7 +136,7 @@ public class PokerHandTest {
                 new PokerHand("TC JS QC KS AC")
                         .compare(new PokerHand("QH QS QC AS 8H"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -164,7 +145,7 @@ public class PokerHandTest {
                 new PokerHand("7H 8H 9H TH JH")
                         .compare(new PokerHand("JH JC JS JD TH"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -173,7 +154,7 @@ public class PokerHandTest {
                 new PokerHand("7H 8H 9H TH JH")
                         .compare(new PokerHand("4H 5H 9H TH JH"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -182,7 +163,7 @@ public class PokerHandTest {
                 new PokerHand("7H 8H 9H TH JH")
                         .compare(new PokerHand("7C 8S 9H TH JH"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -191,7 +172,7 @@ public class PokerHandTest {
                 new PokerHand("7H 8H 9H TH JH")
                         .compare(new PokerHand("TS TH TD JH JD"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -200,7 +181,7 @@ public class PokerHandTest {
                 new PokerHand("7H 8H 9H TH JH")
                         .compare(new PokerHand("JH JD TH TC 4C"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -209,7 +190,7 @@ public class PokerHandTest {
                 new PokerHand("JH JC JS JD TH")
                         .compare(new PokerHand("4H 5H 9H TH JH"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -218,7 +199,7 @@ public class PokerHandTest {
                 new PokerHand("JH JC JS JD TH")
                         .compare(new PokerHand("7C 8S 9H TH JH"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -227,7 +208,7 @@ public class PokerHandTest {
                 new PokerHand("JH JC JS JD TH")
                         .compare(new PokerHand("TS TH TD JH JD"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -236,7 +217,7 @@ public class PokerHandTest {
                 new PokerHand("JH JC JS JD TH")
                         .compare(new PokerHand("JH JD TH TC 4C"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -245,7 +226,7 @@ public class PokerHandTest {
                 new PokerHand("4H 5H 9H TH JH")
                         .compare(new PokerHand("7C 8S 9H TH JH"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -254,7 +235,7 @@ public class PokerHandTest {
                 new PokerHand("4H 5H 9H TH JH")
                         .compare(new PokerHand("TS TH TD JH JD"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -263,7 +244,7 @@ public class PokerHandTest {
                 new PokerHand("4H 5H 9H TH JH")
                         .compare(new PokerHand("JH JD TH TC 4C"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -272,7 +253,7 @@ public class PokerHandTest {
                 new PokerHand("7C 8S 9H TH JH")
                         .compare(new PokerHand("TS TH TD JH JD"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -281,7 +262,7 @@ public class PokerHandTest {
                 new PokerHand("7C 8S 9H TH JH")
                         .compare(new PokerHand("JH JD TH TC 4C"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -290,7 +271,7 @@ public class PokerHandTest {
                 new PokerHand("TS TH TD JH JD")
                         .compare(new PokerHand("JH JD TH TC 4C"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -299,7 +280,7 @@ public class PokerHandTest {
                 new PokerHand("2S 3H 4D 5H 6D")
                         .compare(new PokerHand("5H 6D 7H 8C 9C"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -308,7 +289,7 @@ public class PokerHandTest {
                 new PokerHand("2S 3H 4D 5H 6D")
                         .compare(new PokerHand("2S 3H 4D 5H 6C"));
 
-        Assert.assertEquals(game, PokerResult.DRAW);
+        Assert.assertEquals(PokerResult.DRAW, game);
     }
 
     @Test
@@ -317,7 +298,7 @@ public class PokerHandTest {
                 new PokerHand("2H 3H 4H 5H 7H")
                         .compare(new PokerHand("2D 3D 4D 5D 8D"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -326,7 +307,7 @@ public class PokerHandTest {
                 new PokerHand("2S 2H 2D 5H 6D")
                         .compare(new PokerHand("5H 5D 5H 8C 9C"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -335,7 +316,7 @@ public class PokerHandTest {
                 new PokerHand("2H 3H 4H 5H 6H")
                         .compare(new PokerHand("5H 6H 7H 8H 9H"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -344,7 +325,7 @@ public class PokerHandTest {
                 new PokerHand("TH JH QH KH AH")
                         .compare(new PokerHand("TC JC QC KC AC"));
 
-        Assert.assertEquals(game, PokerResult.DRAW);
+        Assert.assertEquals(PokerResult.DRAW, game);
     }
 
     @Test
@@ -353,7 +334,7 @@ public class PokerHandTest {
                 new PokerHand("TH TH TH TH AS")
                         .compare(new PokerHand("9C 9C 9C 9C 2S"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -362,7 +343,7 @@ public class PokerHandTest {
                 new PokerHand("TH TH TH AH AS")
                         .compare(new PokerHand("9C 9C 9C 2C 2S"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -371,7 +352,7 @@ public class PokerHandTest {
                 new PokerHand("2H 4H 6H 8H AS")
                         .compare(new PokerHand("3C 5C 6C 8C JS"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -380,7 +361,7 @@ public class PokerHandTest {
                 new PokerHand("2H 2H 2H AH AS")
                         .compare(new PokerHand("2C 2C 2C JC JS"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 
     @Test
@@ -389,7 +370,7 @@ public class PokerHandTest {
                 new PokerHand("2H 2H 5H AH AS")
                         .compare(new PokerHand("2C 2C 6C AC AS"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -398,7 +379,7 @@ public class PokerHandTest {
                 new PokerHand("2H 3C 3D 3S 6H")
                         .compare(new PokerHand("2C 3D 4D 5C 6C"));
 
-        Assert.assertEquals(game, PokerResult.LOSS);
+        Assert.assertEquals(PokerResult.LOSS, game);
     }
 
     @Test
@@ -407,6 +388,6 @@ public class PokerHandTest {
                 new PokerHand("AS 2S 5S 8S QS")
                         .compare(new PokerHand("KS JS 5S 8S QS"));
 
-        Assert.assertEquals(game, PokerResult.WIN);
+        Assert.assertEquals(PokerResult.WIN, game);
     }
 }

@@ -10,8 +10,24 @@ import java.util.List;
 public class PokerSorterTest {
 
     @Test
+    public void doSortedCards() {
+        PokerHand hand =
+                new PokerHand("2H 4S KD AD 7C");
+
+        List<PokerCard> cards = List.of(
+                new PokerCard(PokerRank.ACE, PokerSuit.DIAMONDS),
+                new PokerCard(PokerRank.KING, PokerSuit.DIAMONDS),
+                new PokerCard(PokerRank.SEVEN, PokerSuit.CLUBS),
+                new PokerCard(PokerRank.FOUR, PokerSuit.SPADES),
+                new PokerCard(PokerRank.TWO, PokerSuit.HEARTS));
+
+        Assert.assertEquals(cards, hand.getCards());
+    }
+
+    @Test
     public void doSortCardsByRank() {
-        PokerHand hand = new PokerHand("4D 2C 5C 3S 6H");
+        PokerHand hand =
+                new PokerHand("4D 2C 5C 3S 6H");
 
         List<PokerCard> cards = List.of(
                 new PokerCard(PokerRank.SIX, PokerSuit.HEARTS),
@@ -25,7 +41,8 @@ public class PokerSorterTest {
 
     @Test
     public void doSortCardsByGroup() {
-        PokerHand hand = new PokerHand("9C AC 5C 5H 9H");
+        PokerHand hand =
+                new PokerHand("9C AC 5C 5H 9H");
 
         List<PokerCard> cards = List.of(
                 new PokerCard(PokerRank.NINE, PokerSuit.CLUBS),

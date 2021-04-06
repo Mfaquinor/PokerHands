@@ -11,6 +11,14 @@ public interface PokerCategory {
         return PokerResult.from(this.strength() - category.strength());
     }
 
+    default boolean equals(PokerCategory category) {
+        return this.getClass().equals(category.getClass());
+    }
+    
+    default boolean different(PokerCategory category) {
+        return !this.equals(category);
+    }
+
     boolean match(List<PokerCard> cards);
 
     int strength();

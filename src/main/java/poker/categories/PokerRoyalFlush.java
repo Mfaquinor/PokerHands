@@ -2,6 +2,7 @@ package poker.categories;
 
 import poker.application.PokerCard;
 import poker.enums.PokerRank;
+import poker.enums.PokerSuit;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,10 +14,17 @@ public class PokerRoyalFlush implements PokerCategory {
 
     @Override
     public boolean match(List<PokerCard> cards) {
-        return cards.stream()
-                .map(PokerCard::getRank)
-                .collect(Collectors.toList())
-                .equals(PATTERN);
+        List<PokerRank> ranks =
+                cards.stream()
+                        .map(PokerCard::getRank)
+                        .collect(Collectors.toList());
+
+        List<PokerSuit> suits =
+                cards.stream()
+                        .map(PokerCard::getSuit)
+                        .collect(Collectors.toList());
+
+        return ranks.equals(PATTERN) && PokerSuit.isUnique(suits);
     }
 
     @Override

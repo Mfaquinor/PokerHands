@@ -9,6 +9,7 @@ import poker.exceptions.PokerException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PokerHand {
 
@@ -37,7 +38,22 @@ public class PokerHand {
                 PokerCategoryService.evaluate(this.cards);
     }
 
+    public PokerCard getCard(int index) {
+        return this.cards.get(index);
+    }
+
     public PokerResult compare(PokerHand hand) {
-        return this.category.compare(hand.category);
+        return this.category.different(hand.category) ?
+                this.category.compare(hand.category) :
+                this.tiebreaker(hand);
+    }
+
+    private PokerResult tiebreaker(PokerHand hand) {
+        return IntStream.range(0, NUMBER_OF_CARDS)
+                    .map(i -> hand.getCard(i).compareTo(this.getCard(i)))
+                    .filter(evaluation -> evaluation != 0)
+                    .mapToObj(PokerResult::from)
+                    .findFirst()
+                    .orElse(PokerResult.DRAW);
     }
 }
